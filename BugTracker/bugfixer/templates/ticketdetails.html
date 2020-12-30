@@ -1,0 +1,59 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+
+</head>
+<div id="containerIntro" style="margin-top: 20px;margin-bottom: 10px;">
+    <h1 class="h1-edit">Details of Ticket Number {{ticket_to_display.id}} </h1> <a
+        style="font-size: medium;background-color:#f9f9f9;"
+        href="{% url 'ticket_edit' ticket_to_display.id %}" title = "Click here to edit this ticket">Edit
+     <img src ="{% static 'images/edit.png' %}" style="width:1em ; height:1em;margin-bottom:4px"></a>
+</div>
+
+
+<div id="content" class="colM" style="margin-left: 20px;margin-bottom: 20px;">
+    <fieldset class="module aligned">
+ 
+             
+        <div class="field_wrapper" style="margin-top: 10px">
+            <p> <span style="font-weight: 900">Title: </span> {{ticket_to_display.title}}</p>
+        </div>
+
+        <div class="field_wrapper" style="margin-bottom: 20px">
+            <span style="font-weight: 900">Steps to Reproduce:</span>
+            <p style="word-wrap: break-word">{{ticket_to_display.steps_reproduce}}</p>
+        </div>
+          
+                <div class="field_wrapper" style="margin-bottom: 20px">
+                    <p><span style="font-weight: 900">Number of people affected:</span>  {{ticket_to_display.num_of_ppl_affected}}</p>
+                </div>
+
+                <div class="field_wrapper" style="margin-bottom: 20px">
+                    <p> <span style="font-weight: 900">URL: </span></p>
+                    <p style="margin-right: 10px;word-wrap:break-word">{{ticket_to_display.url}}</p>
+                </div>
+
+                <div class="field_wrapper"style="margin-bottom: 20px">
+                    <p><span style="font-weight: 900">Created date:</span> {{ticket_to_display.date|date:'Y/m/d - D' }}</p>
+                </div>
+
+                <div class="field_wrapper"style="margin-bottom: 20px">
+                <p><span style="font-weight: 900">Created by: </span>{{ticket_to_display.created}}</p>
+                </div>
+
+                <div class="field_wrapper"style="margin-bottom: 20px">
+                    <p><span style="font-weight: 900">Assigned to :&nbsp;</span> {{ticket_to_display.assignee}}</p>
+                </div>
+
+                <div class="field_wrapper"style="margin-bottom: 20px">
+                    <p><span style="font-weight: 900">Status :&nbsp;</span> {{ticket_to_display.get_status_display}}</p>
+                </div>
+            </fieldset>
+</div>
+
+
+
+{% endblock %}

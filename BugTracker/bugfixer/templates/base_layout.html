@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Welcome to BugFixer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- placeholder for stylesheets -->
+    <link rel="stylesheet" href="{% static 'baselaycss.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap_min_new.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery.dataTables.min.css' %}">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="http://www.w3schools.com/w3css/4/w3.css">
+    <!-- placeholder for js files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+    <div class="topnav">
+        <a class="home" href="{% url 'index' %}" style="padding: 15px 10px;">
+        <img src ="{% static 'images/logo.png' %}" style="width:
+        70px; height:36px; float: left"> </a>
+        <a class="active rest" href="{% url 'logout_view' %}" style="float: right">Logout</a>
+        <a class ="rest" href="{% url 'ticket_create' %}" style="float: left;margin-left: 3px">Create Ticket</a>
+
+        <p style="margin-top: 20px;margin-right:20px;float: right">Welcome {{user.first_name}}  </p>
+    </div>
+</head>
+<body>
+ {% block content %}
+ {% endblock %}
+</body>
+</html>

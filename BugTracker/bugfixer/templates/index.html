@@ -1,0 +1,34 @@
+{% load static %}
+
+<html>
+
+<head>
+      <title>Welcome to Bugfixer</title>
+          <link rel="stylesheet" href="{% static 'styles.css' %}">
+          {% if user_invalid == True %}
+            <script type="text/javascript">
+               window.alert("Incorrect username or password. Please try again");
+            </script>
+          {% endif %}
+</head>
+
+<body>
+<img src = "{%static 'images/logo.png' %}" style="margin-bottom:20px;position: absolute; top: 5%; width: 10%; height:
+     15%">
+<form method = "post" action = "" method = "post" style="margin-top:12%">
+    {% csrf_token %}
+  <header>Login</header>
+  <label>Username</label>
+  <input type="text" name="username"/>
+  <!--<div class="help">At least 6 character</div>-->
+  <label>Password</label>
+  <input type="password" name="password">
+  <!--<div class="help">Use upper and lowercase lettes as well</div>-->
+  <button>Login</button>
+</form>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script> $(document).ready(
+function () {
+    document.getElementById("id_num_of_ppl_affected").setAttribute("min", "1");
+})
+</script>
+
+</head>
+<div style="width:99.5%">
+<h1 class="h1-edit">Create a new ticket</h1>
+
+{% if error_message %}
+<p><strong> {{error_message}} </strong> </p>
+{% endif %}
+
+
+<div id="content" class="colM">
+    <form method="POST" action="" name="create">
+        {% csrf_token %}
+
+        {{ form.non_filed_errors}}
+        <fieldset class="module aligned ">
+            <div class="field_wrapper">
+                {{ form.title.errors }}
+
+                <label for="{{form.title.id_for_label}}"> Title: </label>
+
+
+                {{ form.title}}
+
+            </div>
+
+            <div class="field_wrapper">
+
+                {{ form.steps_reproduce.errors }}
+
+                 <label for="{{form.steps_reproduce.id_for_label}}"> Steps to reproduce: </label>
+
+                {{ form.steps_reproduce}}
+            </div>
+
+            <div class="field_wrapper">
+                {{ form.num_of_ppl_affected.errors }}
+
+                 <label for="{{form.num_of_ppl_affected.id_for_label}}"> Number of people affected: </label>
+
+                {{form.num_of_ppl_affected}}
+
+            </div>
+
+            <div class="field_wrapper">
+                {{ form.url.errors }}
+
+                 <label for="{{form.url.id_for_label}}"> URL: </label>
+
+                {{ form.url}}
+
+            </div>
+
+             <div class="field_wrapper">
+                {{ form.assignee.errors }}
+
+                 <label for="{{form.assignee.id_for_label}}"> Assignee: </label>
+
+                {{ form.assignee}}
+
+            </div>
+
+
+        </fieldset>
+        </div>
+<div>
+        <input class="input-button centered" type="submit" value="Save">
+</div>
+    </form>
+    </div>
+
+{% endblock %}

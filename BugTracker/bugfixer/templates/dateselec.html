@@ -1,0 +1,80 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+      $( function() {
+        var dateFormat = "mm/dd/yy",
+          from = $( "#from" )
+            .datepicker({
+              changeMonth: true,
+              changeYear: true
+            })
+            .on( "change", function() {
+              to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+          to = $( "#to" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+          })
+          .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+          });
+
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+
+          return date;
+        }
+      } );
+</script>
+</head>
+<body>
+    <div class="col-xs-4 pull-left" style="margin-top: 20px;">
+       <form method = "post" action = "" method = "post">
+          {% csrf_token %}
+      <div class="row titlerow statustitle" style="font-size:14px">
+                      <div class="col-xs-12">
+                          <div class="pull-left">
+                            Select Start Date
+                          </div>
+                          <div class="pull-right">
+                            <input type = "text" name = "from_date" id="from" required>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row titlerow statustitle" style="font-size:14px">
+                      <div class="col-xs-12">
+                          <div class="pull-left">
+                              Select End Date
+                          </div>
+                          <div class="pull-right">
+                            <input type = "text" name = "to_date" id="to" required>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row titlerow statustitle">
+                    <div class="col-xs-12">
+                      <div class = "pull-right">
+                        <input type = "submit" value= "Submit">
+                      </div>
+                    </div>  
+                  </div>
+    </form>
+</body>
+
+
+
+
+
+
+{% endblock %}
